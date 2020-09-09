@@ -1,6 +1,7 @@
 docker
 Flask
 flask_assets
+flask_cors
 numpy
 pandas
 requests
