@@ -1,0 +1,80 @@
+<div class="container">
+  <br><br>
+
+  <mat-card class="main-card">
+    <mat-tab-group (selectedTabChange)="categoryTabChange($event.index)">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Cases
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Deaths
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+
+    <br>
+    <div style="display: flex; justify-content: space-between;">
+      <div class="chip-select">
+        <h6 style="padding: 2px 15px 0 0">X-Axis:</h6>
+        <mat-chip-list [multiple]="false" [selectable]="true">
+          <mat-chip
+            *ngFor="let xAxisChip of xAxisChips"
+            [selected]="selectedxAxisChip == xAxisChip.name"
+            (click)="xAxisChipChange(xAxisChip)">
+            {{xAxisChip.name}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <br>
+      <div class="chip-select">
+        <h6 style="padding: 2px 15px 0 0">Region:</h6>
+        <mat-chip-list [multiple]="false" [selectable]="true">
+          <mat-chip
+            *ngFor="let regionChip of regionChips"
+            [selected]="selectedRegionChip == regionChip.name"
+            (click)="regionChipChange(regionChip)">
+            {{regionChip.name}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+
+    <br>
+    <div class="chip-select">
+      <h6 style="padding: 2px 15px 0 0">Y-Axis:</h6>
+      <mat-chip-list [multiple]="false" [selectable]="true">
+        <mat-chip
+          *ngFor="let yAxisChip of yAxisChips"
+          [selected]="selectedyAxisChip == yAxisChip.name"
+          (click)="yAxisChipChange(yAxisChip)">
+          {{yAxisChip.name}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div *ngIf="loading == true" style="margin: auto; width: 50px;">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="dataSuccess == true">
+      <h5 style="text-align: center">{{selectedyAxisChip}}</h5>
+      <div style="display: block">
+        <canvas
+          mdbChart
+          [chartType]="chartType"
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [colors]="chartColors"
+          [legend]="true"
+          [options]="chartOptions">
+        </canvas>
+      </div>
+    </div>
+    <div *ngIf="dataError == false">{{errorMessage}}</div>
+    <br>
+  </mat-card>
+
+</div>

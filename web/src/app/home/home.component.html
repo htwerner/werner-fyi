@@ -1,0 +1,198 @@
+<div class="container">
+  <br><br>
+
+  <mat-card class="main-card">
+
+    <h2 class="title">Applications</h2>
+
+    <mat-card class="app-card">
+      <mat-card-header>
+        <div mat-card-avatar [routerLink]="'/apps/covid'" class="covid-image"></div>
+        <mat-card-title [routerLink]="'/apps/covid'">
+          COVID-19
+        </mat-card-title>
+        <mat-card-subtitle [routerLink]="'/apps/covid'">
+          Political Dashboard
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p [routerLink]="'/apps/covid'" style="color: #000000">
+          Dashboard for analysis of COVID-19 cases by 2016 state and county electoral results.
+        </p>
+        <div class="row-container">
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="View source code">
+              <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="button-container">
+            <a mat-mini-fab color="black" aria-label="Share on LinkedIn">
+              <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="Share on Facebook">
+              <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="Share on Twitter">
+              <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <br>
+    <mat-card class="app-card">
+      <mat-card-header>
+        <div mat-card-avatar [routerLink]="'/apps/tacos'" class="tacos-image"></div>
+        <mat-card-title [routerLink]="'/apps/tacos'">
+          Tacos
+        </mat-card-title>
+        <mat-card-subtitle [routerLink]="'/apps/tacos'">
+          Food Rating App
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p [routerLink]="'/apps/tacos'" style="color: #000000">
+          A unique twist on rating and experiencing the best taco joints in the DC Metro area.
+        </p>
+        <div class="row-container">
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="View source code">
+              <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="button-container">
+            <a mat-mini-fab color="black" aria-label="Share on LinkedIn">
+              <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="Share on Facebook">
+              <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="Share on Twitter">
+              <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <br>
+    <mat-card class="app-card">
+      <mat-card-header>
+        <div mat-card-avatar [routerLink]="'/apps/systemic-problems'" class="systemic-problems-image"></div>
+        <mat-card-title [routerLink]="'/apps/systemic-problems'">
+          Systemic Racism and Mass Incarceration
+        </mat-card-title>
+        <mat-card-subtitle [routerLink]="'/apps/systemic-problems'">
+          Human Rights Dashboard
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p [routerLink]="'/apps/systemic-problems'" style="color: #000000">
+          Visual representation of systemic racism and mass incarceration problems in the United States.
+        </p>
+        <div class="row-container">
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="View source code">
+              <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="button-container">
+            <a mat-mini-fab color="black" aria-label="Share on LinkedIn">
+              <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="Share on Facebook">
+              <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="button-container">
+            <button mat-mini-fab color="black" aria-label="Share on Twitter">
+              <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-card>
+
+  <br><br>
+
+  <mat-card class="main-card">
+
+    <h2 class="title">Data Sources</h2>
+
+    <mat-card class="data-card">
+      <mat-card-header href="https://github.com/nytimes/covid-19-data" >
+        <div mat-card-avatar class="covid-image"></div>
+        <mat-card-title>
+          COVID-19
+        </mat-card-title>
+        <mat-card-subtitle>
+          Dataset
+        </mat-card-subtitle>
+        <span class="toolbar-spacer"></span>
+        <button mat-raised-button>
+          <a href="https://github.com/nytimes/covid-19-data">
+            Source
+          </a>
+        </button>
+      </mat-card-header>
+    </mat-card>
+
+    <br>
+    <mat-card class="data-card">
+      <mat-card-header>
+        <div mat-card-avatar class="election-image"></div>
+        <mat-card-title>
+          2016 Election (State Results)
+        </mat-card-title>
+        <mat-card-subtitle>
+          Dataset
+        </mat-card-subtitle>
+        <span class="toolbar-spacer"></span>
+        <button mat-raised-button>
+          <a href="https://github.com/kshaffer/election2016">
+            Source
+          </a>
+        </button>
+      </mat-card-header>
+    </mat-card>
+
+    <br>
+    <mat-card class="data-card">
+      <mat-card-header>
+        <div mat-card-avatar class="election-image"></div>
+        <mat-card-title>
+          2016 Election (County Results)
+        </mat-card-title>
+        <mat-card-subtitle>
+          Dataset
+        </mat-card-subtitle>
+        <span class="toolbar-spacer"></span>
+        <button mat-raised-button>
+          <a href="https://github.com/tonmcg/US_County_Level_Election_Results_08-16">
+            Source
+          </a>
+        </button>
+      </mat-card-header>
+    </mat-card>
+  </mat-card>
+
+  <br><br>
+
+</div>
+

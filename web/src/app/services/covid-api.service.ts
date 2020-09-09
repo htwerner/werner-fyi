@@ -8,8 +8,8 @@ import { Observable, of } from 'rxjs';
 export class CovidService {
   constructor(private http: HttpClient) { }
 
-  covidCall(uri: string): Observable<any> {
-    const url = '0.0.0.0:8000/api/';
+  getData(uri: string): Observable<any> {
+    const url = 'http://127.0.0.1:8000/api';
     return this.http.request('GET', url + uri);
   }
 }

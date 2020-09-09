@@ -1,0 +1,6 @@
+docker
+Flask
+flask_assets
+numpy
+pandas
+requests

@@ -1,0 +1,38 @@
+<mat-toolbar class="header-toolbar">
+  <mat-toolbar-row>
+    <button mat-button [routerLink]="'/home'">
+      <img src="https://raw.githubusercontent.com/htwerner/werner-fyi/master/home-page/home/static/logo.png"
+           alt=""
+           style="width:35px;">
+      <a style="font-size: 20px"> erner.fyi</a>
+    </button>
+
+    <span class="toolbar-spacer"></span>
+
+    <h1>{{page_title}}</h1>
+
+    <span class="toolbar-spacer"></span>
+
+    <button mat-button [routerLink]="'/home'" (click)="deselectApps()">
+      <i class="fa fa-home fa-lg" aria-hidden="true"></i> Home
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="appmenu">
+      <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> Apps
+    </button>
+
+    <mat-menu #appmenu="matMenu">
+      <mat-selection-list #appSelection [multiple]="false">
+        <mat-list-option [routerLink]="'/apps/covid'">
+          COVID-19
+        </mat-list-option>
+        <mat-list-option [routerLink]="'/apps/tacos'">
+          Tacos
+        </mat-list-option>
+        <mat-list-option [routerLink]="'/apps/systemic-racism'">
+          Systemic Racism
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

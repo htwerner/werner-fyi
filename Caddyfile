@@ -1,0 +1,11 @@
+werner.fyi {
+    proxy / website:5000
+}
+
+covid.werner.fyi {
+    proxy / api:8000
+}
+
+covid-politics.werner.fyi {
+    redir https://werner.fyi/apps/covid
+}

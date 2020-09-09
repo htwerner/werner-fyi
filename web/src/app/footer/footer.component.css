@@ -1,0 +1,16 @@
+@media {
+  .container {
+    width: 250px;
+  }
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
