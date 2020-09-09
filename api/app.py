@@ -22,5 +22,4 @@ def create_app():
     return app
 
 
-#create_app().run(host='0.0.0.0', port=8000, debug=False)
-create_app().run(port=8000, debug=False)
+create_app().run(host='0.0.0.0', port=8000, debug=False)
