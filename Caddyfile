@@ -1,3 +1,11 @@
-:2015 {
-    root ./
+werner.fyi {
+    proxy / website:5000
+}
+
+api.werner.fyi {
+    proxy / api:8000
+}
+
+covid-politics.werner.fyi, covid.werner.fyi {
+    redir https://werner.fyi/apps/covid
 }

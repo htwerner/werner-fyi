@@ -2,20 +2,26 @@ version: '3.8'
 services:
   server:
     container_name: caddy
-    image: "server:latest"
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: abiosoft/caddy
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-      - "5000:5000"
     volumes:
-      - "./Caddyfile2:/etc/Caddyfile2"
+      - "./Caddyfile:/etc/Caddyfile"
       - "./caddy:/root/.caddy"
     links:
+      - "website:website"
       - "api:api"
+  website:
+    container_name: website
+    image: "website:latest"
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
   api:
     container_name: api
     image: "api:latest"
