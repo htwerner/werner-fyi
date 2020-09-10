@@ -1,8 +1,5 @@
-:5000 {
+http://werner.fyi {
     root ./
-}
-
-werner.fyi {
     proxy / server:5000
 }
 
