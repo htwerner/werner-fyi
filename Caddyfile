@@ -1,13 +1,15 @@
-werner.fyi
-root * /web/dist/web
-try_files {path} {path}/ /index.html
-reverse_proxy /api/* api:8000
-file_server
+:5000 {
+    root ./
+}
 
-covid-politics.werner.fyi {
-    redir https://werner.fyi/apps/covid
+werner.fyi {
+    proxy / server:5000
 }
 
 covid.werner.fyi {
+    redir https://werner.fyi/apps/covid
+}
+
+covid-politics.werner.fyi {
     redir https://werner.fyi/apps/covid
 }
