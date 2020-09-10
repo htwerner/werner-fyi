@@ -1,6 +1,3 @@
-http://werner.fyi {
+:5000 {
     root ./
-    proxy / server:5000
 }
-
-

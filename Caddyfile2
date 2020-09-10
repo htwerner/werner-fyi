@@ -1,0 +1,12 @@
+http://werner.fyi {
+    root ./
+    proxy / server:5000
+}
+
+covid.werner.fyi {
+    redir https://werner.fyi/apps/covid
+}
+
+covid-politics.werner.fyi {
+    redir https://werner.fyi/apps/covid
+}
