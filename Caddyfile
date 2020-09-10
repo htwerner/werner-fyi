@@ -1,6 +1,5 @@
 werner.fyi
 root * /web/dist/web
-encode gzip zstd
 try_files {path} {path}/ /index.html
 reverse_proxy /api/* api:8000
 file_server
