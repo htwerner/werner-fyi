@@ -1,9 +1,9 @@
 from flask import Blueprint
 from services import covid
 
-covid_all = Blueprint('covid_all', __name__, url_prefix='/api')
-covid_since_date = Blueprint('covid_since_date', __name__, url_prefix='/api')
-covid_since_first = Blueprint('covid_since_first', __name__, url_prefix='/api')
+covid_all = Blueprint('covid_all', __name__)
+covid_since_date = Blueprint('covid_since_date', __name__)
+covid_since_first = Blueprint('covid_since_first', __name__)
 
 
 @covid_all.route('/covid-all', methods=['GET'])
