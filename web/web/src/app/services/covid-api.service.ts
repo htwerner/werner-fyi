@@ -9,7 +9,7 @@ export class CovidService {
   constructor(private http: HttpClient) { }
 
   getData(uri: string): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api';
+    const url = 'https://api.werner.fyi';
     return this.http.request('GET', url + uri);
   }
 }
