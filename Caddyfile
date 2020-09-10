@@ -1,4 +1,4 @@
-werner.fyi/* {
+werner.fyi* {
     proxy / website:5000
 }
 
