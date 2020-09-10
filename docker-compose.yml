@@ -11,17 +11,7 @@ services:
       - "./Caddyfile:/etc/Caddyfile"
       - "./caddy:/root/.caddy"
     links:
-      - "website:website"
       - "api:api"
-  website:
-    container_name: website
-    image: "website:latest"
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    ports:
-      - "5000:5000"
   api:
     container_name: api
     image: "api:latest"

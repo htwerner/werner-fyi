@@ -4,4 +4,4 @@ COPY . /web
 WORKDIR /web
 RUN npm install
 EXPOSE 5000
-ENTRYPOINT npm run build
+ENTRYPOINT npm run start
