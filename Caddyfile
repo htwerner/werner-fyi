@@ -3,10 +3,4 @@ http://werner.fyi {
     proxy / server:5000
 }
 
-covid.werner.fyi {
-    redir https://werner.fyi/apps/covid
-}
 
-covid-politics.werner.fyi {
-    redir https://werner.fyi/apps/covid
-}
