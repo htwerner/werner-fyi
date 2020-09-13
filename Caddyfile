@@ -2,8 +2,8 @@ werner.fyi {
     proxy / website:5000
 }
 
-werner.fyi/* {
-    proxy /{uri} website:5000
+www.werner.fyi {
+    redir https://werner.fyi
 }
 
 api.werner.fyi {
@@ -11,5 +11,5 @@ api.werner.fyi {
 }
 
 covid-politics.werner.fyi, covid.werner.fyi {
-    redir https://werner.fyi/apps/covid
+    redir https://werner.fyi
 }
