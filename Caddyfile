@@ -2,12 +2,12 @@ werner.fyi {
     proxy / website:5000
 }
 
-www.werner.fyi {
-    redir https://werner.fyi
-}
-
 api.werner.fyi {
     proxy / api:8000
+}
+
+www.werner.fyi {
+    redir https://werner.fyi
 }
 
 covid-politics.werner.fyi, covid.werner.fyi {
