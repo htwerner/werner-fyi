@@ -2,5 +2,5 @@
 
 # Restart apps
 . bin/kill.sh
-git pull
+sudo git pull
 . bin/start.sh
