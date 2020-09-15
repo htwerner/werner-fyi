@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 
 # Build
 sudo docker-compose build
