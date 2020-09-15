@@ -1,4 +1,4 @@
-#!/usr/bin bash
+#!/usr/bin/sh
 
 ## git clone https://github.com/htwerner/werner-fyi.git
 ## cd werner-fyi

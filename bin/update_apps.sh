@@ -1,4 +1,4 @@
-#!/usr/bin bash
+#!/usr/bin/sh
 
 # Restart apps
 . bin/kill.sh
