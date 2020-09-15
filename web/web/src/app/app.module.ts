@@ -45,6 +45,7 @@ import { HomeComponent } from './home/home.component';
 import { CovidComponent } from './covid/covid.component';
 import { TacosComponent } from './tacos/tacos.component';
 import { SystemicRacismComponent } from './systemic-racism/systemic-racism.component';
+import { PretzelsComponent } from './pretzels/pretzels.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SystemicRacismComponent } from './systemic-racism/systemic-racism.compo
     HomeComponent,
     CovidComponent,
     TacosComponent,
-    SystemicRacismComponent
+    SystemicRacismComponent,
+    PretzelsComponent
   ],
   imports: [
     HttpClientModule,

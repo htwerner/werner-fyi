@@ -149,6 +149,7 @@ export class CovidComponent implements OnInit {
     this.selectedxAxisChip = this.xAxisChips[0].name;
     this.selectedyAxisChip = this.yAxisChips[0].name;
     this.selectedRegionChip = this.regionChips[0].name;
+    this.uriList[1] = 'covid-since-first'
     this.uriList[2] = this.categories[this.selectedIndex].toLowerCase();
     this.getData().then();
   }

@@ -22,18 +22,23 @@
   height: 20%;
 }
 
-.tacos-image {
-  background-image: url('https://www.pinclipart.com/picdir/middle/402-4028562_taco-clipart-mexican-beer-png-download.png');
+.covid-image {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/1200px-SARS-CoV-2_without_background.png');
   background-size: cover;
 }
 
-.systemic-problems-image {
+.systemic-racism-image {
   background-image: url('https://static.vecteezy.com/system/resources/previews/001/211/476/non_2x/stop-racism-hands-vector.jpg');
   background-size: cover;
 }
 
-.covid-image {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/1200px-SARS-CoV-2_without_background.png');
+.pretzels-image {
+  background-image: url('https://st2.depositphotos.com/1903923/5282/v/450/depositphotos_52828183-stock-illustration-pretzel.jpg');
+  background-size: cover;
+}
+
+.tacos-image {
+  background-image: url('https://www.pinclipart.com/picdir/middle/402-4028562_taco-clipart-mexican-beer-png-download.png');
   background-size: cover;
 }
 
