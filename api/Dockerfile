@@ -10,6 +10,8 @@ RUN pip install -r requirements.txt
 
 COPY . api
 WORKDIR api
+RUN chmod +x gunicorn
+
 ENV DEBUG=False
 EXPOSE 8000
 ENTRYPOINT ["bash", "gunicorn"]
