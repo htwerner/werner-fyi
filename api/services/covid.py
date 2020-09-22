@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import io
 import requests
-import datetime
 
 
 def get_virus_data():

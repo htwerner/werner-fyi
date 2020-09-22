@@ -1,5 +1,5 @@
 from flask import Blueprint
-from services import covid
+from api.services import covid
 
 covid_all = Blueprint('covid_all', __name__)
 covid_since_date = Blueprint('covid_since_date', __name__)
