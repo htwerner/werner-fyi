@@ -1,8 +1,12 @@
-FROM python:3.7
+FROM python:3.8
 MAINTAINER Hunter Werner "htwerner@gmail.com"
 
-COPY envs/prod.yml prod.yml
-RUN conda env create -q --file prod.yml
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . api
 WORKDIR api
