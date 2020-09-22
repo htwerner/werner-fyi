@@ -2,14 +2,14 @@
 from flask import Flask
 from flask_assets import Environment
 from flask_cors import CORS
-from api.config import config
+from api.config import app_config
 from api.routes import covid_routes
 
 
 def create_app():
     # start app
     app = Flask(__name__)
-    app.config.from_object(config.Config)
+    app.config.from_object(app_config.Config)
     cors = CORS(app)
     app.config['CORS_HEADERS'] = 'Content-Type'
     assets = Environment()

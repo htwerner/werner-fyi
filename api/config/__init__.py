@@ -1,1 +1,1 @@
-from api.config.config import *
+from api.config.app_config import *

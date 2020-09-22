@@ -10,6 +10,7 @@
 sudo apt-get update
 yes Y | sudo apt-get upgrade
 sudo apt-get install gcc g++ make
+yes Y | sudo apt install python-pip
 
 # Install/enable docker
 yes Y | sudo apt install docker.io
