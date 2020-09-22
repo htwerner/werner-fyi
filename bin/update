@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # Restart apps
-. bin/kill.sh
+. bin/kill
 sudo git pull
-. bin/start.sh
+. bin/start

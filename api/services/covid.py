@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import io
 import requests
+import datetime
 
 
 def get_virus_data():
@@ -104,10 +105,12 @@ def since_date_breakdown(category, level, region):
     )
     df = df.sort_values([level + '_winner', 'date'])
 
+    df['date'] = df['date'].dt.strftime('%m-%d-%Y')
+
     df = df.rename(
         columns={
             'date': 'Date',
-            category: category.capitalize(),
+            category: 'Total ' + category.capitalize(),
             level + '_winner': level.capitalize() + ' Winner'
         }
     )
@@ -155,7 +158,7 @@ def since_first_breakdown(category, level, region):
     df = df.rename(
         columns={
             'date': 'Date',
-            category: category.capitalize(),
+            category: 'Total ' + category.capitalize(),
             'days_since_first_' + category[:-1]: 'Days Since First ' + category[:-1].capitalize(),
             level + '_winner': level.capitalize() + ' Winner'
         }

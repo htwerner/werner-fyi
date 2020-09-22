@@ -1,6 +1,5 @@
 <div class="container">
   <br><br>
-
   <mat-card class="main-card">
     <mat-tab-group (selectedTabChange)="categoryTabChange($event.index)">
       <mat-tab>
@@ -17,7 +16,7 @@
 
     <br>
     <div class="chip-select">
-      <h6 style="padding: 2px 15px 0 0">Region:</h6>
+      <p class="chip-label">Region:</p>
       <mat-chip-list [multiple]="false" [selectable]="true">
         <mat-chip
           *ngFor="let regionChip of regionChips"
@@ -28,9 +27,8 @@
       </mat-chip-list>
     </div>
 
-    <br>
     <div class="chip-select">
-      <h6 style="padding: 2px 15px 0 0">Timeline:</h6>
+      <p class="chip-label">Timeline:</p>
       <mat-chip-list [multiple]="false" [selectable]="true">
         <mat-chip
           *ngFor="let xAxisChip of xAxisChips"
@@ -41,9 +39,8 @@
       </mat-chip-list>
     </div>
 
-    <br>
     <div class="chip-select">
-      <h6 style="padding: 2px 15px 0 0">Data:</h6>
+      <p class="chip-label">Data:</p>
       <mat-chip-list [multiple]="false" [selectable]="true">
         <mat-chip
           *ngFor="let yAxisChip of yAxisChips"
@@ -54,23 +51,25 @@
       </mat-chip-list>
     </div>
 
+    <br>
     <div *ngIf="loading == true" style="margin: auto; width: 50px;">
       <mat-spinner></mat-spinner>
     </div>
     <div *ngIf="dataSuccess == true">
-      <h5 style="text-align: center">{{selectedyAxisChip}}</h5>
-      <div style="display: block">
-        <canvas
-          mdbChart
-          [chartType]="chartType"
-          [datasets]="chartData"
-          [labels]="chartLabels"
-          [colors]="chartColors"
-          [legend]="true"
-          [options]="chartOptions">
-        </canvas>
-      </div>
-      <p style="text-align: center">{{selectedxAxisChip}}</p>
+      <mat-card>
+        <h5 style="text-align: center">{{selectedyAxisChip}}</h5>
+        <div style="display: block">
+          <canvas
+            mdbChart
+            [chartType]="chartType"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [legend]="true"
+            [options]="chartOptions">
+          </canvas>
+        </div>
+      </mat-card>
     </div>
     <div *ngIf="dataError == false">
       {{errorMessage}}

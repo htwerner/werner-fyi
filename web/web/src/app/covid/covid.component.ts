@@ -12,10 +12,32 @@ import {MatTabChangeEvent} from "@angular/material/tabs";
 export class CovidComponent implements OnInit {
 
   covidData: MatTableDataSource<any>;
-  uriList: string[] = ['', 'covid-since-first', 'cases', 'state', 'all']
+  uriList: string[] = ['covid-since-first', 'cases', 'state', 'all']
 
   chartType: string = 'line';
-  chartOptions: any = {responsive: true, scales: {xAxes: [{ticks: {beginAtZero: true}}]}}
+  chartOptions: any = {
+    responsive: true,
+    scales: {
+      xAxes: [{
+          ticks: {
+          },
+        scaleLabel: {
+          display: true
+        }
+        }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          callback: function(label) {
+            return label.toLocaleString();
+          }
+        },
+        scaleLabel: {
+          display: true
+        }
+      }]
+    }
+  }
   chartLabels: Array<any>;
   chartColors: Array<any>;
   chartData: Array<any>;
@@ -41,7 +63,7 @@ export class CovidComponent implements OnInit {
   ]
 
   yAxisChips = [
-    {name: this.categories[this.selectedIndex]},
+    {name: 'Total ' + this.categories[this.selectedIndex]},
     {name: 'New ' + this.categories[this.selectedIndex]}
   ]
 
@@ -67,7 +89,7 @@ export class CovidComponent implements OnInit {
     this.loading = true;
     this.dataSuccess = false;
     this.dataError = false;
-    let uri = this.uriList.join('/');
+    let uri = '/' + this.uriList.join('/');
     this.covidService.getData(uri).subscribe(
       data => {
         this.covidData.data = data;
@@ -87,6 +109,8 @@ export class CovidComponent implements OnInit {
 
   async getChart(): Promise<void> {
     let filters = ['Clinton won', 'Trump won'];
+    this.chartOptions.scales.xAxes[0].scaleLabel.labelString = this.selectedxAxisChip
+    this.chartOptions.scales.yAxes[0].scaleLabel.labelString = this.selectedyAxisChip
     this.chartLabels = this.getChartLabels(
       this.covidData.data,
       this.selectedxAxisChip,
@@ -131,7 +155,7 @@ export class CovidComponent implements OnInit {
           tempData.push(row[dataField]);
         }
       });
-      datasets.push({data: tempData, label: filter})
+      datasets.push({data: tempData, label: filter});
     });
     return datasets;
   }
@@ -143,35 +167,35 @@ export class CovidComponent implements OnInit {
       {name: 'Date'},
     ]
     this.yAxisChips = [
-      {name: this.categories[this.selectedIndex]},
+      {name: 'Total ' + this.categories[this.selectedIndex]},
       {name: 'New ' + this.categories[this.selectedIndex]}
     ]
     this.selectedxAxisChip = this.xAxisChips[0].name;
     this.selectedyAxisChip = this.yAxisChips[0].name;
     this.selectedRegionChip = this.regionChips[0].name;
-    this.uriList[1] = 'covid-since-first'
-    this.uriList[2] = this.categories[this.selectedIndex].toLowerCase();
+    this.uriList[0] = 'covid-since-first';
+    this.uriList[1] = this.categories[this.selectedIndex].toLowerCase();
     this.getData().then();
   }
 
-  xAxisChipChange(chip) {
+  async xAxisChipChange(chip): Promise<void> {
     this.selectedxAxisChip = chip.name;
-    if (chip.name == 'Days Since First Case') {
-      this.uriList[1] = 'covid-since-first'
+    if (chip.name == 'Date') {
+      this.uriList[0] = 'covid-since-date';
     } else {
-      this.uriList[1] = 'covid-since-date'
+      this.uriList[0] = 'covid-since-first';
     }
     this.getData().then();
   }
 
-  yAxisChipChange(chip) {
+  async yAxisChipChange(chip): Promise<void> {
     this.selectedyAxisChip = chip.name;
     this.getChart().then();
   }
 
-  regionChipChange(chip) {
+  async regionChipChange(chip): Promise<void> {
     this.selectedRegionChip = chip.name;
-    this.uriList[4] = this.selectedRegionChip.toLowerCase();
+    this.uriList[3] = this.selectedRegionChip.toLowerCase();
     this.getData().then();
   }
 

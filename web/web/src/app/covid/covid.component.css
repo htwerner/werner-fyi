@@ -12,4 +12,9 @@
 .chip-select {
   display: flex;
   justify-content: flex-start;
+  padding: 0 0 5px 0;
+}
+
+.chip-label {
+  padding: 3px 15px 0 0;
 }
