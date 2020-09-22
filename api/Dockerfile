@@ -9,6 +9,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . api
+WORKDIR api
 ENV DEBUG=False
 EXPOSE 8000
-ENTRYPOINT ["bash", "api/entrypoint"]
+ENTRYPOINT ["bash", "gunicorn"]
