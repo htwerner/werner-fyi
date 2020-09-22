@@ -2,6 +2,7 @@ docker
 Flask
 flask_assets
 flask_cors
+gevent
 gunicorn
 numpy
 pandas
