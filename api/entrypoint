@@ -1,3 +1,0 @@
-#!/bin/bash
-
-gunicorn -c python:api.config.gunicorn_config.py api.wsgi:app
