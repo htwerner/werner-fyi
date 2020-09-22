@@ -9,9 +9,8 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . api
-WORKDIR api
-RUN chmod +x gunicorn
+RUN chmod +x api/gunicorn
 
 ENV DEBUG=False
 EXPOSE 8000
-ENTRYPOINT ["bash", "gunicorn"]
+ENTRYPOINT ["bash", "api/gunicorn"]
