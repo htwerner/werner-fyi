@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatListOption, MatSelectionList } from "@angular/material/list";
+import { MatSelectionList } from "@angular/material/list";
 import { NavigationEnd, Router } from "@angular/router";
-import { SelectionModel } from "@angular/cdk/collections";
 
 @Component({
   selector: 'app-header',
