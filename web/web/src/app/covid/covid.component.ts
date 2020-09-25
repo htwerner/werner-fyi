@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
-import { CovidService } from '../services/covid-api.service'
+import { ApiService } from '../services/api.service'
 import {HttpErrorResponse} from "@angular/common/http";
-import {MatTabChangeEvent} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-covid',
@@ -75,7 +74,7 @@ export class CovidComponent implements OnInit {
     {name: 'West'},
   ]
 
-  constructor(private covidService: CovidService) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.selectedxAxisChip = this.xAxisChips[0].name
@@ -90,7 +89,7 @@ export class CovidComponent implements OnInit {
     this.dataSuccess = false;
     this.dataError = false;
     let uri = '/' + this.uriList.join('/');
-    this.covidService.getData(uri).subscribe(
+    this.apiService.getData(uri).subscribe(
       data => {
         this.covidData.data = data;
       },
