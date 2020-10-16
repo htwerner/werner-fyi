@@ -13,14 +13,15 @@ def covid_since_date_breakdown(category='cases', region='all'):
     _id = "-".join([category, region])
     db = connect("werner-fyi")
     cache_doc = fetch_document(db, _id, _id)
-    expired = check_expired_doc(cache_doc, 60)
-    if cache_doc is None or expired is True:
-        df = covid_services.since_date_breakdown(category, region)
-        df_json = df.to_json(orient='records', date_format='iso')
-        new_doc = CovidMongoDocument(_id, df_json)
-        upsert_document(db, _id, new_doc)
-    else:
-        df_json = cache_doc.data
+    if cache_doc is None:
+        expired = check_expired_doc(cache_doc, 60)
+        if expired is True:
+            df = covid_services.since_date_breakdown(category, region)
+            df_json = df.to_json(orient='records', date_format='iso')
+            new_doc = CovidMongoDocument(_id, df_json)
+            upsert_document(db, _id, new_doc)
+            return df_json
+    df_json = cache_doc.data
     return df_json
 
 
@@ -29,12 +30,13 @@ def covid_since_first_breakdown(category='cases', region='all'):
     _id = "-".join([category, region])
     db = connect("werner-fyi")
     cache_doc = fetch_document(db, _id, _id)
-    expired = check_expired_doc(cache_doc, 60)
-    if cache_doc is None or expired is True:
-        df = covid_services.since_first_breakdown(category, region)
-        df_json = df.to_json(orient='records', date_format='iso')
-        new_doc = CovidMongoDocument(_id, df_json)
-        upsert_document(db, _id, new_doc)
-    else:
-        df_json = cache_doc.data
+    if cache_doc is None:
+        expired = check_expired_doc(cache_doc, 60)
+        if expired is True:
+            df = covid_services.since_first_breakdown(category, region)
+            df_json = df.to_json(orient='records', date_format='iso')
+            new_doc = CovidMongoDocument(_id, df_json)
+            upsert_document(db, _id, new_doc)
+            return df_json
+    df_json = cache_doc.data
     return df_json
