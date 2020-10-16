@@ -11,7 +11,7 @@ covid_since_first = Blueprint('covid_since_first', __name__)
 @covid_since_date.route('/covid-since-date/<category>/<region>', methods=['GET'])
 def covid_since_date_breakdown(category='cases', region='all'):
     _id = "-".join([category, region])
-    db = connect("werner-fyi")
+    db = connect("covid-since-date")
     cache_doc = fetch_document(db, _id, _id)
     expired = check_expired_doc(cache_doc, 60) if cache_doc is not None else True
     if cache_doc is None or expired:
@@ -27,7 +27,7 @@ def covid_since_date_breakdown(category='cases', region='all'):
 @covid_since_first.route('/covid-since-first/<category>/<region>', methods=['GET'])
 def covid_since_first_breakdown(category='cases', region='all'):
     _id = "-".join([category, region])
-    db = connect("werner-fyi")
+    db = connect("covid-since-first")
     cache_doc = fetch_document(db, _id, _id)
     expired = check_expired_doc(cache_doc, 60) if cache_doc is not None else True
     if cache_doc is None or expired:
