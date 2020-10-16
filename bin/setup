@@ -2,8 +2,8 @@
 
 ## git clone https://github.com/htwerner/werner-fyi.git
 ## cd werner-fyi
-## . setup
-## . start
+## sh bin/setup
+## sh bin/start
 
 
 # Update/upgrade apt-get
