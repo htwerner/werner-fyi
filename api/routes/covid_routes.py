@@ -20,7 +20,7 @@ def covid_since_date_breakdown(category='cases', region='all'):
         new_doc = CovidMongoDocument(_id, df_json)
         upsert_document(db, _id, new_doc)
     else:
-        df_json = cache_doc.data
+        df_json = cache_doc["data"]
     return df_json
 
 
@@ -36,5 +36,5 @@ def covid_since_first_breakdown(category='cases', region='all'):
         new_doc = CovidMongoDocument(_id, df_json)
         upsert_document(db, _id, new_doc)
     else:
-        df_json = cache_doc.data
+        df_json = cache_doc["data"]
     return df_json
