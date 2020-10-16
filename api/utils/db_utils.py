@@ -14,7 +14,7 @@ def connect(db_name):
 
 def upsert_document(db, collection, document):
     col = db[collection]
-    col.save(document)
+    col.save(document.__dict__)
 
 
 def fetch_document(db, collection, _id):
