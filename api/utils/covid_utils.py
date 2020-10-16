@@ -1,7 +1,7 @@
-import pandas as pd
-import numpy as np
 import io
 import requests
+import pandas as pd
+import numpy as np
 
 
 def get_virus_data():
@@ -83,83 +83,3 @@ def get_data():
     ]]
 
     return virus_data
-
-
-def since_date_breakdown(category, level, region):
-    data = get_data()
-    if region != 'all':
-        data = data[data['region'] == region.capitalize()]
-
-    data = data[['date', category, level + '_winner']]
-
-    df = data.groupby([level + '_winner', 'date'])\
-        .agg({category: 'sum'})\
-        .fillna(0)\
-        .reset_index()
-    df['New ' + category.capitalize()] = df[category].diff()
-    df['New ' + category.capitalize()] = np.where(
-      df[level + '_winner'] != df[level + '_winner'].shift(1),
-      np.nan,
-      df['New ' + category.capitalize()]
-    )
-    df = df.sort_values([level + '_winner', 'date'])
-
-    df['date'] = df['date'].dt.strftime('%m-%d-%Y')
-
-    df = df.rename(
-        columns={
-            'date': 'Date',
-            category: 'Total ' + category.capitalize(),
-            level + '_winner': level.capitalize() + ' Winner'
-        }
-    )
-    return df
-
-
-def since_first_breakdown(category, level, region):
-    data = get_data()
-    if region != 'all':
-        data = data[data['region'] == region.capitalize()]
-
-    data = data[['date', level, category, level + '_winner']]
-
-    # Group by date and state or county, and sum cases
-    df = data.groupby(['date', level, level + '_winner'])[category]\
-        .apply(sum)\
-        .fillna(0)\
-        .reset_index()
-
-    # Group by state or county and assign day numbers since first case or death
-    df['days_since_first_' + category[:-1]] = df.sort_values('date')\
-                                                .groupby([level])\
-                                                .cumcount()+1
-
-    # Find last day where all states have COVID and filter past
-    max_days = min(
-        df.groupby(['state']).agg({'days_since_first_' + category[:-1]: max})['days_since_first_' + category[:-1]]
-    )
-    df = df[df['days_since_first_' + category[:-1]] <= max_days]
-
-    # Group by state or county winner and days since first case or death, and sum cases
-    df = df.groupby([level + '_winner', 'days_since_first_' + category[:-1]])[category]\
-        .apply(sum)\
-        .fillna(0)\
-        .reset_index()
-
-    df['New ' + category.capitalize()] = df[category].diff()
-    df['New ' + category.capitalize()] = np.where(
-        df[level + '_winner'] != df[level + '_winner'].shift(1),
-        np.nan,
-        df['New ' + category.capitalize()]
-    )
-    df = df.sort_values([level + '_winner', 'days_since_first_' + category[:-1]])
-
-    df = df.rename(
-        columns={
-            'date': 'Date',
-            category: 'Total ' + category.capitalize(),
-            'days_since_first_' + category[:-1]: 'Days Since First ' + category[:-1].capitalize(),
-            level + '_winner': level.capitalize() + ' Winner'
-        }
-    )
-    return df

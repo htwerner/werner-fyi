@@ -11,7 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class CovidComponent implements OnInit {
 
   covidData: MatTableDataSource<any>;
-  uriList: string[] = ['covid-since-first', 'cases', 'state', 'all']
+  uriList: string[] = ['covid-since-first', 'cases', 'all']
 
   chartType: string = 'line';
   chartOptions: any = {
@@ -194,7 +194,7 @@ export class CovidComponent implements OnInit {
 
   async regionChipChange(chip): Promise<void> {
     this.selectedRegionChip = chip.name;
-    this.uriList[3] = this.selectedRegionChip.toLowerCase();
+    this.uriList[2] = this.selectedRegionChip.toLowerCase();
     this.getData().then();
   }
 
