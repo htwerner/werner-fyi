@@ -9,33 +9,40 @@
 
     <span class="toolbar-spacer"></span>
 
+    <div></div>
+
+    <span class="toolbar-spacer"></span>
+
     <h1>{{page_title}}</h1>
 
     <span class="toolbar-spacer"></span>
 
-    <button mat-button [routerLink]="'/home'" (click)="deselectApps()">
-      <i class="fa fa-home fa-lg" aria-hidden="true"></i> Home
-    </button>
-
-    <button mat-button [matMenuTriggerFor]="appmenu">
-      <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> Apps
-    </button>
-
-    <mat-menu #appmenu="matMenu">
-      <mat-selection-list #appSelection [multiple]="false">
-        <mat-list-option [routerLink]="'/apps/covid'">
-          COVID-19
-        </mat-list-option>
-        <mat-list-option [routerLink]="'/apps/systemic-racism'">
-          Systemic Racism
-        </mat-list-option>
-        <mat-list-option [routerLink]="'/apps/pretzels'">
-          DC Pretzels
-        </mat-list-option>
-        <mat-list-option [routerLink]="'/apps/tacos'">
-          DC Tacos
-        </mat-list-option>
-      </mat-selection-list>
-    </mat-menu>
+    <div class="row-container">
+      <div class="button-container">
+        <a mat-mini-fab color="black" href="https://github.com/htwerner" aria-label="View GitHub">
+          <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="button-container">
+        <a mat-mini-fab color="black" href="https://www.linkedin.com/in/hunterwerner/" aria-label="Follow on LinkedIn">
+          <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="button-container">
+        <a mat-mini-fab color="black" href="https://www.facebook.com/hunter.werner" aria-label="Follow on Facebook">
+          <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="button-container">
+        <a mat-mini-fab color="black" href="https://www.instagram.com/hunt_wern/" aria-label="Follow on Instagram">
+          <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="button-container">
+        <a mat-mini-fab color="black" href="https://twitter.com/hunt_wern" aria-label="Follow on Twitter">
+          <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

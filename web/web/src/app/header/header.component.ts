@@ -11,8 +11,6 @@ export class HeaderComponent implements OnInit {
 
   page_title: string;
 
-  @ViewChild('appSelection') appSelection: MatSelectionList;
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -32,10 +30,6 @@ export class HeaderComponent implements OnInit {
         }
       }
     )
-  }
-
-  deselectApps(): void {
-    this.appSelection.deselectAll();
   }
 
 }

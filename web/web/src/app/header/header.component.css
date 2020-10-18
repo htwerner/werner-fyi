@@ -1,12 +1,21 @@
 .header-toolbar {
   color: #FFFFFF;
   background-color: #000000;
+  min-width: 950px;
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
 }
 
-button {
-  font-size: 15px;
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  min-width: 300px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
 }

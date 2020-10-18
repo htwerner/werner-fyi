@@ -1,0 +1,50 @@
+<br>
+<mat-accordion multi>
+  <button mat-button class="nav-button" [routerLink]="'/home'" (click)="accordion.closeAll()">
+    <i class="fa fa-home fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
+    Home
+  </button>
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <h6 class="nav-title">
+        <i class="fa fa-bar-chart fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
+        Dashboards
+      </h6>
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <button mat-button [routerLink]="'/apps/covid'">
+        COVID-19
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button [routerLink]="'/apps/systemic-racism'">
+        Systemic Racism
+      </button>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <h6 class="nav-title">
+        <i class="fa fa-rocket fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
+        Applications
+      </h6>
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <button mat-button [routerLink]="'/apps/pretzels'">
+        DC Pretzels
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button [routerLink]="'/apps/tacos'">
+        DC Tacos
+      </button>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-expansion-panel>
+  <a mat-button class="nav-button" href="https://venmo.com/htwerner">
+    <i class="fa fa-coffee fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
+    Donate a Coffee
+  </a>
+</mat-accordion>
