@@ -1,6 +1,10 @@
 <br>
 <mat-accordion multi>
-  <button mat-button class="nav-button" [routerLink]="'/home'" (click)="accordion.closeAll()">
+  <button
+    mat-button
+    class="nav-button"
+    [routerLink]="'/home'"
+    (click)="accordion.closeAll()">
     <i class="fa fa-home fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
     Home
   </button>
@@ -13,11 +17,11 @@
     </mat-expansion-panel-header>
     <mat-nav-list>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/covid'">
+      <button mat-button [routerLink]="'/apps/covid'" (click)="navigateToComponent()">
         COVID-19
       </button>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/systemic-racism'">
+      <button mat-button [routerLink]="'/apps/systemic-racism'" (click)="navigateToComponent()">
         Systemic Racism
       </button>
       <mat-divider></mat-divider>
@@ -33,11 +37,11 @@
     </mat-expansion-panel-header>
     <mat-nav-list>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/pretzels'">
+      <button mat-button [routerLink]="'/apps/pretzels'" (click)="navigateToComponent()">
         DC Pretzels
       </button>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/tacos'">
+      <button mat-button [routerLink]="'/apps/tacos'" (click)="navigateToComponent()">
         DC Tacos
       </button>
       <mat-divider></mat-divider>

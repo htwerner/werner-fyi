@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSelectionList } from "@angular/material/list";
-import { NavigationEnd, Router } from "@angular/router";
+import {Component, OnInit, Output} from '@angular/core';
+import {NavigationEnd, Router} from "@angular/router";
+import {EventEmitter} from "@angular/core";
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,8 @@ import { NavigationEnd, Router } from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  @Output() toggleMenuFromNavBar = new EventEmitter();
 
   page_title: string;
 

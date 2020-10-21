@@ -1,14 +1,10 @@
-<app-header></app-header>
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
-    <app-sidenav></app-sidenav>
+<app-header (toggleMenuFromNavBar)="toggleMenu()"></app-header>
+<mat-drawer-container class="main">
+  <mat-drawer mode="side" [opened]="menu_open">
+    <app-sidenav (toggleMenuFromSideNav)="toggleMenu()"></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="main">
-      <router-outlet></router-outlet>
-      <app-footer></app-footer>
-    </div>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </mat-drawer-content>
 </mat-drawer-container>
-
-
