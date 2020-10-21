@@ -17,11 +17,11 @@
     </mat-expansion-panel-header>
     <mat-nav-list>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/covid'" (click)="navigateToComponent()">
+      <button mat-button [routerLink]="'/dashboards/covid'" (click)="this.accordion.closeAll()">
         COVID-19
       </button>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/systemic-racism'" (click)="navigateToComponent()">
+      <button mat-button [routerLink]="'/dashboards/systemic-racism'" (click)="this.accordion.closeAll()">
         Systemic Racism
       </button>
       <mat-divider></mat-divider>
@@ -37,11 +37,11 @@
     </mat-expansion-panel-header>
     <mat-nav-list>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/pretzels'" (click)="navigateToComponent()">
+      <button mat-button [routerLink]="'/apps/pretzels'" (click)="this.accordion.closeAll()">
         DC Pretzels
       </button>
       <mat-divider></mat-divider>
-      <button mat-button [routerLink]="'/apps/tacos'" (click)="navigateToComponent()">
+      <button mat-button [routerLink]="'/apps/tacos'" (click)="this.accordion.closeAll()">
         DC Tacos
       </button>
       <mat-divider></mat-divider>

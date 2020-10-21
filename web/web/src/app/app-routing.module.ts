@@ -9,8 +9,8 @@ import { PretzelsComponent } from "./pretzels/pretzels.component";
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "home"},
   {path: "home", component: HomeComponent},
-  {path: "apps/covid", component: CovidComponent},
-  {path: "apps/systemic-racism", component: SystemicRacismComponent},
+  {path: "dashboards/covid", component: CovidComponent},
+  {path: "dashboards/systemic-racism", component: SystemicRacismComponent},
   {path: "apps/pretzels", component: PretzelsComponent},
   {path: "apps/tacos", component: TacosComponent},
 ];
