@@ -5,6 +5,7 @@ import { CovidComponent } from './covid/covid.component';
 import { TacosComponent } from './tacos/tacos.component';
 import { SystemicRacismComponent } from './systemic-racism/systemic-racism.component';
 import { PretzelsComponent } from "./pretzels/pretzels.component";
+import { DocumentationComponent } from "./documentation/documentation.component";
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "home"},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: "dashboards/systemic-racism", component: SystemicRacismComponent},
   {path: "apps/pretzels", component: PretzelsComponent},
   {path: "apps/tacos", component: TacosComponent},
+  {path: "api/documentation", component: DocumentationComponent},
 ];
 
 @NgModule({

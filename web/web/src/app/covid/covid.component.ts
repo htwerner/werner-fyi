@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from "@angular/material/table";
-import { ApiService } from '../services/api.service'
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
+import {ApiService} from '../services/api.service'
 import {HttpErrorResponse} from "@angular/common/http";
+import {MatAccordion} from "@angular/material/expansion";
 
 @Component({
   selector: 'app-covid',
@@ -9,6 +10,19 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./covid.component.css']
 })
 export class CovidComponent implements OnInit {
+
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+  selectedDashboard: string;
+  selectedCategory: string;
+  selectedRegion: string;
+  selectedState: string;
+  selectedCounty: string
+
+  dashboardOptions: Array<string> = ["COVID-19 Statistics", "Politics of COVID"]
+  categoryOptions: Array<string> = ["Cases", "Deaths"]
+  regionOptions: Array<string> = ["All", "Midwest", "Northeast", "West", "South"]
+  stateOptions: Array<string> = [""]
+  countyOptions: Array<string> = [""]
 
   covidData: MatTableDataSource<any>;
   uriList: string[] = ['covid-since-first', 'cases', 'all']
@@ -57,7 +71,7 @@ export class CovidComponent implements OnInit {
   ]
 
   xAxisChips = [
-    {name: 'Days Since First ' + this.categories[this.selectedIndex].substring(0, this.categories[this.selectedIndex].length - 1)},
+    {name: 'Days Since First Case'},
     {name: 'Date'},
   ]
 
@@ -77,6 +91,12 @@ export class CovidComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.selectedDashboard = this.dashboardOptions[0]
+    this.selectedCategory = this.categoryOptions[0]
+    this.selectedRegion = this.regionOptions[0]
+    this.selectedState = this.stateOptions[0]
+    this.selectedCounty = this.countyOptions[0]
+
     this.selectedxAxisChip = this.xAxisChips[0].name
     this.selectedyAxisChip = this.yAxisChips[0].name
     this.selectedRegionChip = this.regionChips[0].name
@@ -162,7 +182,7 @@ export class CovidComponent implements OnInit {
   async categoryTabChange(index: number): Promise<void> {
     this.selectedIndex = index;
     this.xAxisChips = [
-      {name: 'Days Since First ' + this.categories[this.selectedIndex].substring(0, this.categories[this.selectedIndex].length - 1)},
+      {name: 'Days Since First Case'},
       {name: 'Date'},
     ]
     this.yAxisChips = [

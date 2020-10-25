@@ -4,7 +4,7 @@
     mat-button
     class="nav-button"
     [routerLink]="'/home'"
-    (click)="accordion.closeAll()">
+    (click)="this.accordion.closeAll()">
     <i class="fa fa-home fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
     Home
   </button>
@@ -47,6 +47,14 @@
       <mat-divider></mat-divider>
     </mat-nav-list>
   </mat-expansion-panel>
+  <button
+    mat-button
+    class="nav-button"
+    [routerLink]="'/api/documentation'"
+    (click)="this.accordion.closeAll()">
+    <i class="fa fa-home fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
+    API Documentation
+  </button>
   <a mat-button class="nav-button" href="https://venmo.com/htwerner">
     <i class="fa fa-coffee fa-lg" aria-hidden="true" style="padding: 0 5px 0 0"></i>
     Donate a Coffee

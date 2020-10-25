@@ -47,6 +47,7 @@ import { TacosComponent } from './tacos/tacos.component';
 import { SystemicRacismComponent } from './systemic-racism/systemic-racism.component';
 import { PretzelsComponent } from './pretzels/pretzels.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { DocumentationComponent } from './documentation/documentation.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     TacosComponent,
     SystemicRacismComponent,
     PretzelsComponent,
-    SidenavComponent
+    SidenavComponent,
+    DocumentationComponent
   ],
   imports: [
     HttpClientModule,

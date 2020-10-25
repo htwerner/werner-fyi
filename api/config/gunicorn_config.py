@@ -1,6 +1,6 @@
-bind = '0.0.0.0:8000'
-forwarded_allowed_ips = 'nginx'
+bind = "0.0.0.0:8000"
+forwarded_allowed_ips = "nginx"
 workers = 4
-worker_class = 'gevent'
+worker_class = "gevent"
 timeout = 6000
-pythonpath = '/home/ubuntu/api'
+pythonpath = "/home/ubuntu/api"

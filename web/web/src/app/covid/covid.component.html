@@ -1,4 +1,55 @@
 <div class="container">
+  <mat-card class="selection-card" style="display: flex; justify-content: flex-start">
+    <mat-form-field class="selection-field" appearance="fill">
+      <mat-label>Current Dashboard</mat-label>
+      <mat-select [(value)]="selectedDashboard">
+        <mat-option *ngFor="let dashboard of dashboardOptions" [value]="dashboard">
+          {{dashboard}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="selection-field" appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select [(value)]="selectedCategory">
+        <mat-option *ngFor="let category of categoryOptions" [value]="category">
+          {{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="selection-field" appearance="fill">
+      <mat-label>Region</mat-label>
+      <mat-select [(value)]="selectedRegion">
+        <mat-option *ngFor="let region of regionOptions" [value]="region">
+          {{region}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="selection-field" appearance="fill" *ngIf="selectedRegion != 'All'">
+      <mat-label>State</mat-label>
+      <mat-select [(value)]="selectedState">
+        <mat-option *ngFor="let state of stateOptions" [value]="state">
+          {{state}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="selection-field" appearance="fill" *ngIf="selectedState != 'All'">
+      <mat-label>County</mat-label>
+      <mat-select [(value)]="selectedCounty">
+        <mat-option *ngFor="let county of countyOptions" [value]="county">
+          {{county}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
+</div>
+
+
+
+<div class="container" *ngIf="selectedDashboard == dashboardOptions[1]">
 
   <mat-card class="main-card">
     <mat-tab-group (selectedTabChange)="categoryTabChange($event.index)">

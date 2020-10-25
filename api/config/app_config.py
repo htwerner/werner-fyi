@@ -3,6 +3,6 @@ import os
 
 
 class Config(object):
-    FLASK_ENV = 'production'
-    DEBUG = os.getenv('DEBUG', False)
+    FLASK_ENV = "production"
+    DEBUG = os.getenv("DEBUG", False)
     TESTING = False
