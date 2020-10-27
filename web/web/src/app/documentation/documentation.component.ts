@@ -17,7 +17,7 @@ export class DocumentationComponent implements OnInit {
         SwaggerUIBundle.presets.apis,
         SwaggerUIBundle.SwaggerUIStandalonePreset
       ],
-      url: 'https://petstore.swagger.io/v2/swagger.json',
+      url: 'https://raw.githubusercontent.com/htwerner/werner-fyi/master/api/documentation.json',
       docExpansion: 'none',
       operationsSorter: 'alpha'
     });

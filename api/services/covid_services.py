@@ -1,3 +1,4 @@
+import pandas as pd
 import numpy as np
 
 from api.utils.covid_utils import get_virus_political_data, get_virus_data
@@ -5,29 +6,37 @@ from api.utils.state_utils import get_state_info, get_county_info
 
 
 def summary_data(category, region, state, county):
-    covid_data = get_virus_data()
+    covid_data = get_virus_data()[["Date", "State", "FIPS", category]]
     if region != "All":
-        state_data = get_state_info()
+        state_data = get_state_info()[["State", "Region"]]
         covid_data = covid_data.merge(state_data, how="left", on="State")
-        if region != "All":
-            covid_data = covid_data[covid_data["Region"] == region]
-            if state != "All":
-                covid_data = covid_data[covid_data["State"] == state]
-                if county != "All":
-                    county_data = get_county_info()
-                    covid_data = covid_data.merge(county_data, how="left", on="fips")
-                    covid_data = covid_data[covid_data["County"] == county]
+        covid_data = covid_data[covid_data["Region"] == region]
+        if state != "All":
+            covid_data = covid_data[covid_data["State"] == state]
+            if county != "All":
+                county_data = get_county_info()[["FIPS", "County"]]
+                covid_data = covid_data.merge(county_data, how="left", on="FIPS")
+                covid_data = covid_data[covid_data["County"] == county]
+                covid_data = covid_data[["Date", "County", category]]
+            else:
+                covid_data = covid_data[["Date", "State", category]]
+        else:
+            covid_data = covid_data[["Date", "Region", category]]
+    else:
+        covid_data = covid_data[["Date", category]]
 
-    covid_data = covid_data[["Date", category]]
-    df = covid_data.groupby(["Date"]) \
+    df = covid_data[["Date", category]]
+    df = df.groupby(["Date"]) \
         .agg({category: "sum"}) \
         .fillna(0) \
         .reset_index()
-    df["New " + category.capitalize()] = df[category].diff()
+    df["New " + category] = df[category].diff()
+    df["6-Day Rolling Average New " + category] = df["New " + category].rolling(6).mean()
     df["Date"] = df["Date"].dt.strftime("%m-%d-%Y")
+    df = df.where(pd.notnull(df), None)
     df = df.rename(
         columns={
-            category: "Total " + category.capitalize()
+            category: "Total " + category
         }
     )
     return df

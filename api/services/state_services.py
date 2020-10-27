@@ -1,17 +1,19 @@
 from api.utils.state_utils import get_state_info, get_county_info
 
 
-def get_state_dict(state):
-    state_info = get_state_info()       # state,state_abbr,region,division
-    county_info = get_county_info()     # fips, county, state_abbr
+def get_state_dict():
+    state_info = get_state_info()
+    county_info = get_county_info()
     state_info = county_info.merge(state_info, how="left", on="State Abbreviation")
-    state_info = state_info[["State", "County"]]
-
-    if state != "All":
-        state_info = state_info[state_info["state"] == state]
+    state_info = state_info[["Region", "State", "County"]]
+    state_info = state_info.dropna()
 
     state_dict = {}
-    for state in list(state_info["County"].unique()):
-        state_dict[state] = state_info[state_info["State"] == state]["County"].to_list()
+    for region in list(state_info["Region"].unique()):
+        temp_df = state_info[state_info["Region"] == region]
+        temp_dict = {
+            state: temp_df[temp_df["State"] == state]["County"].to_list() for state in list(temp_df["State"].unique())
+        }
+        state_dict[region] = temp_dict
 
     return state_dict

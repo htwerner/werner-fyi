@@ -28,7 +28,6 @@ def get_county_info():
             "state": "State Abbreviation"
         }
     )
-
     return county_info
 
 

@@ -8,8 +8,14 @@ import { Observable } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
+  url = 'https://api.werner.fyi/';
+
   getData(uri: string): Observable<any> {
-    const url = 'https://api.werner.fyi';
-    return this.http.request('GET', url + uri);
+    return this.http.request('GET', this.url + uri);
+  }
+
+  postData(uri: string, data: any): Observable<any> {
+    return this.http.request(
+      'POST', this.url + uri, {body: data});
   }
 }

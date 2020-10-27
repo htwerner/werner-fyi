@@ -32,12 +32,12 @@ def covid_summary_data():
                 county = request_body["county"]
 
     df = covid_services.summary_data(category, region, state, county)
-    df_json = df.to_json(orient="records", date_format="iso")
+    df_json = df.to_dict(orient="list")
     return df_json
 
 
 @covid_since_date.route("/covid-since-date", methods=["POST"])
-def covid_since_date_breakdown(category="cases", region="all"):
+def covid_since_date_breakdown():
     request_body = request.get_json(force=True)
     if "category" in request_body:
         category = request_body["category"]
@@ -63,7 +63,7 @@ def covid_since_date_breakdown(category="cases", region="all"):
 
 
 @covid_since_first.route("/covid-since-first", methods=["POST"])
-def covid_since_first_breakdown(category="cases", region="all"):
+def covid_since_first_breakdown():
     request_body = request.get_json(force=True)
     if "category" in request_body:
         category = request_body["category"]

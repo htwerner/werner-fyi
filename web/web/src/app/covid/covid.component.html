@@ -1,114 +1,103 @@
+<mat-toolbar class="dashboard-selection-card">
+  <div style="padding: 0 0 0 25px"></div>
+  <mat-tab-group headerPosition="above" (selectedTabChange)="dashboardChange($event.index)">
+    <mat-tab *ngFor="let dashboard of dashboardOptions" [label]="dashboard"></mat-tab>
+  </mat-tab-group>
+</mat-toolbar>
+
 <div class="container">
-  <mat-card class="selection-card" style="display: flex; justify-content: flex-start">
-    <mat-form-field class="selection-field" appearance="fill">
-      <mat-label>Current Dashboard</mat-label>
-      <mat-select [(value)]="selectedDashboard">
-        <mat-option *ngFor="let dashboard of dashboardOptions" [value]="dashboard">
-          {{dashboard}}
+  <mat-card class="inputs-selection-card">
+    <mat-form-field
+      class="selection-field"
+      appearance="fill"
+      *ngIf="selectedDashboard == dashboardOptions[1]">
+      <mat-label>Data</mat-label>
+      <mat-select [(value)]="selectedDataType" (selectionChange)="this.selectedDataTypeChange($event.value)">
+        <mat-option *ngFor="let datatype of datatypeOptions" [value]="datatype">
+          {{datatype}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="selection-field" appearance="fill">
       <mat-label>Category</mat-label>
-      <mat-select [(value)]="selectedCategory">
+      <mat-select [(value)]="selectedCategory" (selectionChange)="this.selectedCategoryChange($event.value)">
         <mat-option *ngFor="let category of categoryOptions" [value]="category">
           {{category}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
+    <h6 *ngIf="selectedDashboard == dashboardOptions[1]" style="padding: 20px 20px 0 0;">by</h6>
+
+    <mat-form-field
+      class="selection-field"
+      appearance="fill"
+      *ngIf="selectedDashboard == dashboardOptions[1]">
+      <mat-label>Timeline</mat-label>
+      <mat-select [(value)]="selectedTimeline" (selectionChange)="this.selectedTimelineChange($event.value)">
+        <mat-option *ngFor="let timeline of timelineOptions" [value]="timeline">
+          {{timeline}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <h6 *ngIf="selectedDashboard == dashboardOptions[1]" style="padding: 20px 20px 0 0;">in the</h6>
+
     <mat-form-field class="selection-field" appearance="fill">
       <mat-label>Region</mat-label>
-      <mat-select [(value)]="selectedRegion">
+      <mat-select [(value)]="selectedRegion" (selectionChange)="selectedRegionChange($event.value)" >
         <mat-option *ngFor="let region of regionOptions" [value]="region">
           {{region}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="selection-field" appearance="fill" *ngIf="selectedRegion != 'All'">
+    <mat-form-field
+      class="selection-field"
+      appearance="fill"
+      *ngIf="selectedDashboard == dashboardOptions[0]">
       <mat-label>State</mat-label>
-      <mat-select [(value)]="selectedState">
+      <mat-select [(value)]="selectedState"(selectionChange)="selectedStateChange($event.value)">
         <mat-option *ngFor="let state of stateOptions" [value]="state">
           {{state}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="selection-field" appearance="fill" *ngIf="selectedState != 'All'">
+    <mat-form-field
+      class="selection-field"
+      appearance="fill"
+      *ngIf="selectedDashboard == dashboardOptions[0]">
       <mat-label>County</mat-label>
-      <mat-select [(value)]="selectedCounty">
+      <mat-select [(value)]="selectedCounty" (selectionChange)="this.selectedCounty = $event.value">
         <mat-option *ngFor="let county of countyOptions" [value]="county">
           {{county}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <div style="padding: 10px 0 0 0">
+      <button mat-raised-button color="primary" (click)="getData()">Update Graph</button>
+    </div>
+
+    <div style="padding: 10px 0 0 10px">
+      <button mat-raised-button color="primary" (click)="resetOptions()">Reset Fields</button>
+    </div>
   </mat-card>
 </div>
 
 
 
-<div class="container" *ngIf="selectedDashboard == dashboardOptions[1]">
+<div class="container">
 
   <mat-card class="main-card">
-    <mat-tab-group (selectedTabChange)="categoryTabChange($event.index)">
-      <mat-tab>
-        <ng-template mat-tab-label>
-          Cases
-        </ng-template>
-      </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          Deaths
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-
-    <br>
-    <div class="chip-select">
-      <p class="chip-label">Region:</p>
-      <mat-chip-list [multiple]="false" [selectable]="true">
-        <mat-chip
-          *ngFor="let regionChip of regionChips"
-          [selected]="selectedRegionChip == regionChip.name"
-          (click)="regionChipChange(regionChip)">
-          {{regionChip.name}}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
-
-    <div class="chip-select">
-      <p class="chip-label">Timeline:</p>
-      <mat-chip-list [multiple]="false" [selectable]="true">
-        <mat-chip
-          *ngFor="let xAxisChip of xAxisChips"
-          [selected]="selectedxAxisChip == xAxisChip.name"
-          (click)="xAxisChipChange(xAxisChip)">
-          {{xAxisChip.name}}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
-
-    <div class="chip-select">
-      <p class="chip-label">Data:</p>
-      <mat-chip-list [multiple]="false" [selectable]="true">
-        <mat-chip
-          *ngFor="let yAxisChip of yAxisChips"
-          [selected]="selectedyAxisChip == yAxisChip.name"
-          (click)="yAxisChipChange(yAxisChip)">
-          {{yAxisChip.name}}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
-
-    <br>
     <div *ngIf="loading == true" style="margin: auto; width: 50px;">
       <mat-spinner></mat-spinner>
     </div>
     <div *ngIf="dataSuccess == true">
       <mat-card>
-        <h5 style="text-align: center">{{selectedyAxisChip}}</h5>
+        <h5 style="text-align: center">{{chartTitle}}</h5>
         <div style="display: block">
           <canvas
             mdbChart
@@ -122,7 +111,7 @@
         </div>
       </mat-card>
     </div>
-    <div *ngIf="dataError == false">
+    <div *ngIf="dataError == true">
       {{errorMessage}}
     </div>
   </mat-card>

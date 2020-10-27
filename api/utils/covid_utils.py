@@ -13,7 +13,6 @@ def get_virus_data():
     virus_data = pd.read_csv(io.StringIO(req.decode("utf-8")), dtype={"fips": str})
     virus_data = virus_data[pd.notnull(virus_data["fips"])]
     virus_data["date"] = pd.to_datetime(virus_data["date"])
-    virus_data = virus_data[virus_data["date"] >= "03-01-2020"]
     virus_data = virus_data.rename(
         columns={
             "date": "Date",
@@ -32,6 +31,7 @@ def get_virus_political_data():
     state_info = get_state_info()
     state_data = get_state_electoral_data()
 
+    virus_data = virus_data[virus_data["Date"] >= "03-01-2020"]
     state_data["State Winner"] = np.where(
         state_data["Clinton Electors"] > state_data["Trump Electors"],
         "Clinton won",
