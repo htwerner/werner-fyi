@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://api.werner.fyi"
+      "url": "https://api.werner.fyi"
     }
   ],
   "paths": {
