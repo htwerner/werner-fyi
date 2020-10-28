@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 
+declare let gtag: Function;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,6 +26,9 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        gtag(
+          'config', 'G-J31RL02PGQ', {'page_path': event.urlAfterRedirects}
+        );
         if (this.open_menu_urls.indexOf(event.urlAfterRedirects) !== -1) {
           this.openMenu();
         } else if (this.close_menu_urls.indexOf(event.urlAfterRedirects) !== -1) {
