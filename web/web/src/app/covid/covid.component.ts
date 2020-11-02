@@ -28,6 +28,13 @@ export class CovidComponent implements OnInit {
   stateOptions: Array<string>;
   countyOptions: Array<string>;
 
+  newLabel: string;
+  averageLabel: string;
+  totalLabel: string;
+  newInCategory: number;
+  averageInCategory: number;
+  totalInCategory: number;
+
   covidData: MatTableDataSource<any>;
   uri: string = "covid-since-first";
 
@@ -154,6 +161,9 @@ export class CovidComponent implements OnInit {
     this.loading = true;
     this.dataSuccess = false;
     this.dataError = false;
+    this.newLabel = "New " + this.selectedCategory
+    this.averageLabel = "6-Day Rolling Average New " + this.selectedCategory
+    this.totalLabel = "Total " + this.selectedCategory
     let requestBody = {
       "category": this.selectedCategory,
       "region": this.selectedRegion,
@@ -163,6 +173,10 @@ export class CovidComponent implements OnInit {
     this.apiService.postData("covid-all", requestBody).subscribe(
       data => {
         this.covidData.data = data
+        let last_index = data["New " + this.selectedCategory].length - 1
+        this.newInCategory = data[this.newLabel][last_index]
+        this.averageInCategory = data[this.averageLabel][last_index]
+        this.totalInCategory = data[this.totalLabel][last_index]
       },
       error => {
         this.errorMessage = this.httpError(error)

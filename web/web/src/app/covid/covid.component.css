@@ -21,6 +21,10 @@
   padding: 20px 25px 20px 25px;
 }
 
+.summary-card {
+  min-width: 425px;
+}
+
 .selection-field {
   padding: 0 20px 0 0;
 }
